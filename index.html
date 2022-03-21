@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather App</title>
+    <link rel="shortcut icon" href="/img/icons/umbrella.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <script src="index.js" defer></script>
+</head>
+<body>
+<div class="app">
+    <div class="content">
+        <div class="search">
+            <input type="text" placeholder="Search city">
+            <button><img src="img/icons/search.png" class="icon"></button>
+        </div>
+        <div class="today-card card">
+            <h1 class="location">Dhaka</h1>
+            <h2 class="day">Today</h2>
+            <img class="weather-state-icon icon" src="img/icons/sunny.png">
+            <h2 class="main-temp">26.7°C</h2>
+            <h2 class="weather-state-name">Thunderstorm</h2>
+            <div class="min-temp">
+                <h3 class="min_temp">17.7°C</h3>
+                <img class="thermometer-low icon" src="img/icons/thermometer-low.png">
+            </div>
+            <div class="max-temp">
+                <img class="thermometer-high icon" src="img/icons/thermometer.png">
+                <h3 class="max_temp"> 30.4°C</h3>
+            </div>
+            <div class="wind">
+                <img class="wind-icon icon" src="img/icons/direction.png">
+                <h3 class="wind_speed">2.70mph</h3>
+                <h3 class="wind_direction" hidden>167.4 degree</h3>
+            </div>
+            <div class="pressure">
+                <img class="barometer-icon icon" src="img/icons/barometer.png">
+                <h3 class="air-pressure">1017.5mbar</h3>
+            </div>
+            <div class="humidity">
+                <img class="humidity-icon icon" src="img/icons/humidity.png">
+                <h3 class="humidity-percentage">58%</h3>
+            </div>
+            <div class="visibility">
+                <img class="visibility-icon icon" src="img/icons/telescope.png">
+                <h3 class="visibility-distance">11.0miles</h3>
+            </div>
+            <div class="predictability">
+                <img class="predictability-icon icon" src="img/icons/thinking.png">
+                <h3 class="predictability-percentage">68%</h3>
+            </div>
+        </div>
+        <div class="this-week-cards">
+            <div class="card">
+                <img class="weather-state-icon icon" src="img/icons/sunny.png">
+                <h2 class="day">Tuesday</h2>
+                <h2 class="main-temp">26.7°C</h2>
+                <h2 class="weather-state-name">Thunderstorm</h2>
+                <div class="min-temp">
+                    <h3 class="min_temp">17.7°C</h3>
+                    <img class="thermometer-low icon" src="img/icons/thermometer-low.png">
+                </div>
+                <div class="max-temp">
+                    <img class="thermometer-high icon" src="img/icons/thermometer.png">
+                    <h3 class="max_temp"> 30.4°C</h3>
+                </div>
+                <div class="wind">
+                    <img class="wind-icon icon" src="img/icons/direction.png">
+                    <h3 class="wind_speed">2.70mph</h3>
+                    <h3 class="wind_direction" hidden>167.4 degree</h3>
+                </div>
+                <div class="pressure">
+                    <img class="barometer-icon icon" src="img/icons/barometer.png">
+                    <h3 class="air-pressure">1017.5mbar</h3>
+                </div>
+                <div class="humidity">
+                    <img class="humidity-icon icon" src="img/icons/humidity.png">
+                    <h3 class="humidity-percentage">58%</h3>
+                </div>
+                <div class="visibility">
+                    <img class="visibility-icon icon" src="img/icons/telescope.png">
+                    <h3 class="visibility-distance">11.0miles</h3>
+                </div>
+                <div class="predictability">
+                    <img class="predictability-icon icon" src="img/icons/thinking.png">
+                    <h3 class="predictability-percentage">68%</h3>
+                </div>
+            </div>
+            <div class="card">
+                <img class="weather-state-icon icon" src="img/icons/sunny.png">
+                <h2 class="day">Tuesday</h2>
+                <h2 class="main-temp">26.7°C</h2>
+                <h2 class="weather-state-name">Thunderstorm</h2>
+                <div class="min-temp">
+                    <h3 class="min_temp">17.7°C</h3>
+                    <img class="thermometer-low icon" src="img/icons/thermometer-low.png">
+                </div>
+                <div class="max-temp">
+                    <img class="thermometer-high icon" src="img/icons/thermometer.png">
+                    <h3 class="max_temp"> 30.4°C</h3>
+                </div>
+                <div class="wind">
+                    <img class="wind-icon icon" src="img/icons/direction.png">
+                    <h3 class="wind_speed">2.70mph</h3>
+                    <h3 class="wind_direction" hidden>167.4 degree</h3>
+                </div>
+                <div class="pressure">
+                    <img class="barometer-icon icon" src="img/icons/barometer.png">
+                    <h3 class="air-pressure">1017.5mbar</h3>
+                </div>
+                <div class="humidity">
+                    <img class="humidity-icon icon" src="img/icons/humidity.png">
+                    <h3 class="humidity-percentage">58%</h3>
+                </div>
+                <div class="visibility">
+                    <img class="visibility-icon icon" src="img/icons/telescope.png">
+                    <h3 class="visibility-distance">11.0miles</h3>
+                </div>
+                <div class="predictability">
+                    <img class="predictability-icon icon" src="img/icons/thinking.png">
+                    <h3 class="predictability-percentage">68%</h3>
+                </div>
+            </div>
+            <div class="card">
+                <img class="weather-state-icon icon" src="img/icons/sunny.png">
+                <h2 class="day">Tuesday</h2>
+                <h2 class="main-temp">26.7°C</h2>
+                <h2 class="weather-state-name">Thunderstorm</h2>
+                <div class="min-temp">
+                    <h3 class="min_temp">17.7°C</h3>
+                    <img class="thermometer-low icon" src="img/icons/thermometer-low.png">
+                </div>
+                <div class="max-temp">
+                    <img class="thermometer-high icon" src="img/icons/thermometer.png">
+                    <h3 class="max_temp"> 30.4°C</h3>
+                </div>
+                <div class="wind">
+                    <img class="wind-icon icon" src="img/icons/direction.png">
+                    <h3 class="wind_speed">2.70mph</h3>
+                    <h3 class="wind_direction" hidden>167.4 degree</h3>
+                </div>
+                <div class="pressure">
+                    <img class="barometer-icon icon" src="img/icons/barometer.png">
+                    <h3 class="air-pressure">1017.5mbar</h3>
+                </div>
+                <div class="humidity">
+                    <img class="humidity-icon icon" src="img/icons/humidity.png">
+                    <h3 class="humidity-percentage">58%</h3>
+                </div>
+                <div class="visibility">
+                    <img class="visibility-icon icon" src="img/icons/telescope.png">
+                    <h3 class="visibility-distance">11.0miles</h3>
+                </div>
+                <div class="predictability">
+                    <img class="predictability-icon icon" src="img/icons/thinking.png">
+                    <h3 class="predictability-percentage">68%</h3>
+                </div>
+            </div>
+            <div class="card">
+                <img class="weather-state-icon icon" src="img/icons/sunny.png">
+                <h2 class="day">Tuesday</h2>
+                <h2 class="main-temp">26.7°C</h2>
+                <h2 class="weather-state-name">Thunderstorm</h2>
+                <div class="min-temp">
+                    <h3 class="min_temp">17.7°C</h3>
+                    <img class="thermometer-low icon" src="img/icons/thermometer-low.png">
+                </div>
+                <div class="max-temp">
+                    <img class="thermometer-high icon" src="img/icons/thermometer.png">
+                    <h3 class="max_temp"> 30.4°C</h3>
+                </div>
+                <div class="wind">
+                    <img class="wind-icon icon" src="img/icons/direction.png">
+                    <h3 class="wind_speed">2.70mph</h3>
+                    <h3 class="wind_direction" hidden>167.4 degree</h3>
+                </div>
+                <div class="pressure">
+                    <img class="barometer-icon icon" src="img/icons/barometer.png">
+                    <h3 class="air-pressure">1017.5mbar</h3>
+                </div>
+                <div class="humidity">
+                    <img class="humidity-icon icon" src="img/icons/humidity.png">
+                    <h3 class="humidity-percentage">58%</h3>
+                </div>
+                <div class="visibility">
+                    <img class="visibility-icon icon" src="img/icons/telescope.png">
+                    <h3 class="visibility-distance">11.0miles</h3>
+                </div>
+                <div class="predictability">
+                    <img class="predictability-icon icon" src="img/icons/thinking.png">
+                    <h3 class="predictability-percentage">68%</h3>
+                </div>
+            </div>
+            <div class="card">
+                <img class="weather-state-icon icon" src="img/icons/sunny.png">
+                <h2 class="day">Tuesday</h2>
+                <h2 class="main-temp">26.7°C</h2>
+                <h2 class="weather-state-name">Thunderstorm</h2>
+                <div class="min-temp">
+                    <h3 class="min_temp">17.7°C</h3>
+                    <img class="thermometer-low icon" src="img/icons/thermometer-low.png">
+                </div>
+                <div class="max-temp">
+                    <img class="thermometer-high icon" src="img/icons/thermometer.png">
+                    <h3 class="max_temp"> 30.4°C</h3>
+                </div>
+                <div class="wind">
+                    <img class="wind-icon icon" src="img/icons/direction.png">
+                    <h3 class="wind_speed">2.70mph</h3>
+                    <h3 class="wind_direction" hidden>167.4 degree</h3>
+                </div>
+                <div class="pressure">
+                    <img class="barometer-icon icon" src="img/icons/barometer.png">
+                    <h3 class="air-pressure">1017.5mbar</h3>
+                </div>
+                <div class="humidity">
+                    <img class="humidity-icon icon" src="img/icons/humidity.png">
+                    <h3 class="humidity-percentage">58%</h3>
+                </div>
+                <div class="visibility">
+                    <img class="visibility-icon icon" src="img/icons/telescope.png">
+                    <h3 class="visibility-distance">11.0miles</h3>
+                </div>
+                <div class="predictability">
+                    <img class="predictability-icon icon" src="img/icons/thinking.png">
+                    <h3 class="predictability-percentage">68%</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="attribution">
+        <div>Icons made by<br>
+            <a href="https://www.freepik.com" title="Freepik">Freepik</a>,
+            <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>
+            and
+            <a href="https://www.freepik.com" title="Freepik">Freepik</a>
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
