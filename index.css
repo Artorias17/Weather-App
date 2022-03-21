@@ -8,7 +8,11 @@
 body {
     width: 100vw;
     height: auto;
+<<<<<<< HEAD
     background: url("img/background/michael-diane-weidner-h-rP5KSC2W0-unsplash.jpg") no-repeat center fixed;
+=======
+    background: url("/img/background/michael-diane-weidner-h-rP5KSC2W0-unsplash.jpg") no-repeat center fixed;
+>>>>>>> b6c4ccafbd8201c12a420daf1e4eec3b88f43dc6
     backdrop-filter: blur(10px);
 }
 
