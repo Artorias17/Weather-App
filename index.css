@@ -1,3 +1,13 @@
+:root {
+    --today-h1: clamp(2.5rem, 1.4285714285714286rem + 5.357142857142857vw, 4rem);
+    --today-h2: clamp(2rem, 0.9285714285714286rem + 5.357142857142857vw, 3.5rem);
+    --today-h3: clamp(1rem, -0.0714285714285714rem + 5.357142857142857vw, 2.5rem);
+
+    --week-h2: clamp(1.5rem, 0.4285714285714286rem + 5.357142857142857vw, 3rem);
+    --week-h3: clamp(1rem, 0.2857142857142858rem + 3.571428571428571vw, 2rem);
+    --search-font: clamp(1rem, 0.2857142857142858rem + 3.571428571428571vw, 2rem);
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Nova Mono', monospace;
@@ -6,20 +16,19 @@
 }
 
 body {
-    width: 100vw;
-    height: auto;
+    height: fit-content;
+    width: fit-content;
     background: url("img/background/michael-diane-weidner-h-rP5KSC2W0-unsplash.jpg") no-repeat center fixed;
     backdrop-filter: blur(10px);
 }
 
 .app {
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 1vw;
+    align-items: stretch;
+    padding: 0.5vw;
 }
 
 .main-container {
@@ -29,12 +38,15 @@ body {
     align-items: stretch;
     flex-wrap: nowrap;
     flex: 2;
-    width: 100%;
 }
 
 .icon {
-    width: 5vw;
+    width: calc(var(--week-h3) * 1.5);
     margin: 0.5vw;
+}
+
+.today-card .icon {
+    width: calc(var(--today-h3) * 1.5);
 }
 
 .search-box-container {
@@ -44,23 +56,28 @@ body {
     border-radius: 20px;
     box-shadow: 0 0 20px 0 rgba(0,0,0,0.75);
     border: 1px solid black;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search-box {
     display: flex;
     justify-content: center;
     align-items: stretch;
+    width: 100%;
 }
 
 .search-field {
-    height: 5vh;
-    font-size: 2rem;
+    font-size: var(--search-font);
     font-weight: bold;
     background: none;
     border: none;
     border-bottom: 3px solid rgba(255, 255, 255, 0.25);
     outline: none;
     overflow: hidden;
+    flex: 0.75;
 }
 
 .search-field:focus-visible {
@@ -76,18 +93,41 @@ body {
 }
 
 .search-box button {
+    border: 3px solid rgba(255, 255, 255, 0.25);
     background: none;
-    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2vw;
+    margin: 0.5vw;
+    outline: none;
+    transition: border 0.5s ease-out, background 0.5s ease-in-out;
+    flex: 0;
 }
 
 .search-button {
-    width: auto;
-    height: 5vh;
-    margin: 0.5vw;
+    width: calc(var(--search-font) * 1.2);
 }
 
-.this-week-cards .icon {
-    width: 5vw;
+.search-box button:focus-visible, .search-box button:hover {
+    border: 3px solid rgb(70, 100, 230, 100);
+}
+
+.search-box button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.search-box button:active {
+    transform: scale(0.9);
+    background: white;
+    transition: background 0s;
+}
+
+.week-card-container {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
 }
 
 .this-week-cards {
@@ -95,7 +135,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: stretch;
-    width: 100%;
+    flex: 2;
 }
 
 .card-container {
@@ -105,14 +145,18 @@ body {
     margin: 1vw;
     padding: 5vw;
     border: 1px solid black;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    flex: 1;
 }
 
 .card {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: auto;
     align-items: center;
     justify-items: left;
+    flex: 1;
 }
 
 .min-temp, .max-temp, .wind, .pressure, .humidity, .predictability, .visibility {
@@ -120,8 +164,6 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
-    height: 100%;
 }
 
 h1, h2, h3, .attribution, .search-box input {
@@ -141,179 +183,259 @@ h1, h2, h3, .attribution, .search-box input {
     color: rgb(82, 129, 222);
 }
 
-.card * {
-    width: fit-content;
-}
-
-.today-card *  {
-    font-size: 1.2rem;
-}
-
-.today-card .icon {
-    width: 10vw;
+.today-card h3  {
+    font-size: var(--today-h3);
 }
 
 .today-card > .location {
-    grid-area: 1/1/1/7;
-    font-size: 3rem;
+    grid-area: 1/1/1/5;
+    font-size: var(--today-h1);
 }
 
 .today-card > .day {
-    grid-area: 2/1/2/4;
-    font-size: 2rem;
+    grid-area: 2/1/2/3;
+    font-size: var(--today-h2);
 }
 
 .today-card > .weather-state-icon {
-    grid-area: 3/1/3/7;
-    width: 25vw;
+    grid-area: 3/1/5/3;
+    width: calc(var(--today-h3) * 4);
 }
 
 .today-card > .main-temp {
-    grid-area: 4/1/4/7;
-    font-size: 2rem;
+    grid-area: 5/1/5/3;
+    font-size: var(--today-h2);
 }
 
 .today-card > .weather-state-name {
-    grid-area: 5/1/5/7;
-    font-size: 2rem;
+    grid-area: 6/1/6/4;
+    font-size: var(--today-h2);
 }
 
 .today-card > .min-temp {
-    grid-area: 6/1/6/4;
-    justify-self: right;
+    grid-area: 7/1/7/3;
+    justify-self: center;
 }
 
 .today-card > .max-temp {
-    grid-area: 6/4/6/7;
-    justify-self: left;
+    grid-area: 7/3/7/5;
+    justify-self: center;
 }
 
 .today-card > .wind {
-    grid-area: 7/2/7/4;
-    justify-self: right;
-    flex-direction: row-reverse;
+    grid-area: 3/3/3/5;
 }
 
 .today-card > .pressure {
-    grid-area: 8/4/8/7;
-    justify-self: left;
+    grid-area: 4/3/4/5;
 }
 
 .today-card > .humidity {
-    grid-area: 7/4/7/7;
-    justify-self: left;
+    grid-area: 5/3/5/5;
 }
 
 .today-card > .visibility {
-    grid-area: 8/1/8/4;
-    justify-self: right;
-    flex-direction: row-reverse;
+    grid-area: 8/1/8/5;
+    justify-self: center;
 }
 
 .today-card > .predictability {
-    grid-area: 2/4/2/7;
+    grid-area: 2/3/2/5;
+}
+
+.this-week-cards .day {
+    grid-area: 1/1/1/3;
+    font-size: var(--week-h2);
 }
 
 .this-week-cards .weather-state-icon {
-    width: 20vw;
+    width: calc(var(--week-h2) * 4);
     grid-area: 2/1/4/3;
 }
 
 .this-week-cards .main-temp {
-    grid-area: 2/3/2/5;
-    font-size: 2rem;
+    grid-area: 2/3/2/7;
+    font-size: var(--week-h2);
 }
 
 .this-week-cards .weather-state-name {
     grid-area: 3/3/3/7;
-    font-size: 2rem;
+    font-size: var(--week-h2);
 }
 
-.this-week-cards .day {
-    grid-area: 1/1/1/4;
-    font-size: 2rem;
-}
 
-.this-week-cards * {
-    font-size: 1.2rem;
-    justify-self: center;
+.this-week-cards h3 {
+    font-size: var(--week-h3);
 }
 
 .this-week-cards .min-temp {
     grid-area: 4/1/4/3;
     justify-content: flex-end;
     flex-direction: row-reverse;
+    justify-self: center;
 }
 
 .this-week-cards .max-temp {
     grid-area: 4/3/4/5;
+    justify-self: center;
 }
 
 .this-week-cards .wind {
-    grid-area: 5/1/5/4;
+    grid-area: 2/5/2/7;
 }
 
 .this-week-cards .pressure {
     grid-area: 5/4/5/7;
+    justify-self: center;
 }
 
 .this-week-cards .humidity {
     grid-area: 4/5/4/7;
+    justify-self: center;
 }
 
 .this-week-cards .visibility {
-    grid-area: 6/3/6/5;
+    grid-area: 5/1/5/4;
+    justify-self: center;
 }
 
 .this-week-cards .predictability {
-    grid-area: 1/4/1/5;
-    justify-content: flex-end;
+    grid-area: 1/3/1/7;
 }
 
-@media screen and (min-width: 600px) and (orientation: landscape) {
-    body{
+/*tablet*/
+@media only screen and (min-width : 768px) {
+    :root {
+        --today-h1: clamp(3rem, 1.0555555555555556rem + 0.9259259259259258vw, 3.25rem);
+        --today-h2: clamp(2rem, 1.0555555555555556rem + 0.9259259259259258vw, 2.25rem);
+        --today-h3: clamp(1rem, 1.0555555555555556rem + 0.9259259259259258vw, 1.25rem);
+
+        --week-h2: clamp(1.25rem, 1.0555555555555556rem + 0.9259259259259258vw, 1.5rem);
+        --week-h3: clamp(1rem, 1.0555555555555556rem + 0.9259259259259258vw, 1.25rem);
+
+        --search-font: clamp(1.5rem, 1.0555555555555556rem + 0.9259259259259258vw, 1.75rem);
+    }
+
+    .app {
         height: 100vh;
+    }
+
+    .search-box-container {
+        padding: 1vw;
+    }
+
+    .card-container {
+        padding: 1vw;
+        width: auto;
+        height: auto;
+    }
+
+    .today-card {
+        flex: 0;
+    }
+
+    .today-card > .weather-state-icon {
+        grid-area: 3/1/5/3;
+    }
+
+    .today-card > .main-temp {
+        grid-area: 3/3/3/5;
+    }
+
+    .today-card > .weather-state-name {
+        grid-area: 4/3/4/7;
+    }
+
+    .today-card > .min-temp {
+        grid-area: 3/5/3/6;
+        justify-self: center;
+    }
+
+    .today-card > .max-temp {
+        grid-area: 3/6/3/7;
+        justify-self: center;
+    }
+
+    .today-card > .wind {
+        grid-area: 5/3/5/5;
+        justify-self: center;
+    }
+
+    .today-card > .pressure {
+        grid-area: 5/5/5/7;
+        justify-self: center;
+    }
+
+    .today-card > .humidity {
+        grid-area: 5/1/5/3;
+        justify-self: center;
+    }
+
+    .today-card > .visibility {
+        grid-area: 5/7/5/9;
+        justify-self: center;
+    }
+
+    .today-card > .predictability {
+        grid-area: 2/3/2/5;
+    }
+
+    .this-week-cards {
+        flex-direction: row;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+}
+
+/*laptop*/
+@media only screen and (min-width : 1200px) {
+    :root {
+        --today-h1: clamp(3.5rem, 0.4117647058823528rem + 4.117647058823529vw, 7rem);
+        --today-h2: clamp(2.5rem, 0.2941176470588234rem + 2.941176470588235vw, 5rem);
+        --today-h3: clamp(1.5rem, 0.17647058823529416rem + 1.7647058823529411vw, 3rem);
+
+        --week-h2: clamp(1.5rem, 0.6176470588235294rem + 1.1764705882352942vw, 2.5rem);
+        --week-h3: clamp(1rem, 0.11764705882352944rem + 1.1764705882352942vw, 2rem);
+        --search-font: clamp(1.5rem, 1.0588235294117647rem + 0.5882352941176471vw, 2rem);
     }
 
     .main-container {
         display: grid;
-        grid-template-columns: repeat(19, 1fr) 15px;
-        grid-template-rows: repeat(20, 1fr);
+        grid-template-columns: 70fr 30fr;
+        grid-template-rows: 10fr 90fr;
         place-items: stretch;
         height: 90%;
     }
 
 
     .search-box-container {
-        grid-area: 1/15/1/20;
-        padding: 1vw;
+        grid-row-start: 1;
+        grid-column-start: 2;
     }
 
     [data-initial] {
-        /*grid-area: 1/1/-1/-1;*/
+        /*grid-area: 1/1/3/3;*/
     }
 
-    .today-card .icon {
-        width: 3vw;
-    }
-
-    .this-week-cards .icon {
-        width: 2vw;
+    .week-card-container {
+        grid-area: 2/2/3/3;
+        overflow-y: auto;
     }
 
     .this-week-cards {
-        grid-area: 2/15/-1/-1;
-        overflow-y: auto;
+        overflow-x: hidden;
         flex-direction: column;
         justify-content: stretch;
         align-items: center;
-        height: auto;
-        width: 30vw;
         scrollbar-gutter: stable;
+        padding-left: clamp(1.5rem, 0.6176470588235294rem + 1.1764705882352942vw, 2.5rem);
+        padding-right: clamp(0.75rem, 0.3088235294117647rem + 0.5882352941176471vw, 1.25rem);
+        height: 100%;
+        width: 100%;
     }
 
     ::-webkit-scrollbar {
-        width: 15px;
+        width: clamp(0.75rem, 0.3088235294117647rem + 0.5882352941176471vw, 1.25rem);
     }
 
     ::-webkit-scrollbar-track {
@@ -323,8 +445,16 @@ h1, h2, h3, .attribution, .search-box input {
 
     ::-webkit-scrollbar-thumb {
         background-color: rgba(230, 130, 50, 100);
-        background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.3) 20%,transparent 20%,transparent 40%,rgba(255, 255, 255, 0.3) 40%,rgba(255,255,255,.3) 60%,transparent 60%,transparent 80%,rgba(255, 255, 255, 0.3) 80%);
         border-radius: 10px;
+        background-image:-webkit-linear-gradient(45deg,
+                                                rgba(255,255,255,.3) 20%,
+                                                transparent 20%,
+                                                transparent 40%,
+                                                rgba(255, 255, 255, 0.3) 40%,
+                                                rgba(255,255,255,.3) 60%,
+                                                transparent 60%,
+                                                transparent 80%,
+                                                rgba(255, 255, 255, 0.3) 80%);
     }
 
     .card-container {
@@ -332,100 +462,66 @@ h1, h2, h3, .attribution, .search-box input {
         flex-direction: column-reverse;
         justify-content: flex-start;
         align-items: stretch;
-        grid-area: 1/1/-1/15;
-        width: auto;
-        height: auto;
-        padding: 1vw;
-    }
-
-    .today-card {
-        grid-template-rows: auto;
-        grid-template-columns: repeat(6, 1fr);
-        justify-items: left;
-    }
-
-    .today-card *  {
-        font-size: 2rem;
+        grid-area: 1/1/3/2;
     }
 
     .today-card > .location {
-        grid-area: 1/1/1/3;
-        font-size: 6rem;
+        grid-row-start: 1;
+        grid-column-start: 1;
     }
 
     .today-card > .day {
         grid-area: 2/1/2/2;
-        font-size: 5rem;
     }
 
     .today-card > .weather-state-icon {
         grid-area: 3/1/3/2;
-        width: 6vw;
         justify-self: center;
+        width: calc(var(--today-h2) * 2);
     }
 
     .today-card > .main-temp {
         grid-area: 3/2/3/3;
-        font-size:4.5rem;
     }
 
     .today-card > .weather-state-name {
-        grid-area: 3/3/3/7;
-        font-size:4.5rem;
-        justify-self: left;
+        grid-row-start: 3;
+        grid-column-start: 3;
     }
 
     .today-card > .min-temp {
         grid-area: 4/1/4/2;
         flex-direction: row-reverse;
-        justify-self: left;
+        justify-self: flex-start;
     }
 
     .today-card > .max-temp {
         grid-area: 4/2/4/3;
+        justify-self: flex-start;
     }
 
     .today-card > .humidity {
         grid-area: 4/3/4/4;
+        justify-self: flex-start;
     }
 
     .today-card > .pressure {
         grid-area: 5/2/5/3;
+        justify-self: flex-start;
     }
 
     .today-card > .wind {
         grid-area: 5/1/5/2;
-        justify-self: left;
-        flex-direction: row;
+        justify-self: flex-start;
     }
 
     .today-card > .visibility {
         grid-area: 5/3/5/4;
-        justify-self: left;
-        flex-direction: row;
+        justify-self: flex-start;
     }
 
     .today-card > .predictability {
         grid-area: 2/2/2/3;
-    }
-
-    .this-week-cards .weather-state-icon {
-        width: 6vw;
-    }
-
-    .this-week-cards .visibility {
-        grid-area: 5/5/5/7;
-    }
-
-    .this-week-cards .pressure {
-        grid-area: 5/3/5/5;
-    }
-
-    .this-week-cards .wind {
-        grid-area: 5/1/5/3;
-    }
-
-    .this-week-cards * {
-        justify-self: left;
+        justify-self: flex-start;
     }
 }
