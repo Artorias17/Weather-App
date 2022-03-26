@@ -419,19 +419,18 @@ h1, h2, h3, .attribution, .search-box input {
 
     .week-card-container {
         grid-area: 2/2/3/3;
+        width: auto;
+        height: auto;
         overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-gutter: stable both-edges;
     }
 
     .week-cards {
-        overflow-x: hidden;
         flex-direction: column;
         justify-content: stretch;
         align-items: center;
-        scrollbar-gutter: stable;
-        padding-left: clamp(1.5rem, 0.6176470588235294rem + 1.1764705882352942vw, 2.5rem);
-        padding-right: clamp(0.75rem, 0.3088235294117647rem + 0.5882352941176471vw, 1.25rem);
-        height: 100%;
-        width: 100%;
+        overflow-x: clip;
     }
 
     ::-webkit-scrollbar {
