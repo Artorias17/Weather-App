@@ -44,6 +44,8 @@ body {
 .icon {
     width: calc(var(--week-h3) * 1.5);
     margin: 0.5vw;
+    filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.8));
+
 }
 
 .main-card .icon {
@@ -51,9 +53,9 @@ body {
 }
 
 .search-box-container {
-    margin: 1vw;
+    margin: 20px;
     padding: 5vw;
-    background: linear-gradient(to bottom, rgba(50, 50, 50, 0.1), rgba(50, 50, 50, 0.3));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(50, 50, 50, 0.8));
     border-radius: 20px;
     box-shadow: 0 0 20px 0 rgba(0,0,0,0.75);
     border: 1px solid black;
@@ -61,6 +63,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: visible;
+}
+
+label {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    flex: 0.75;
 }
 
 .search-box {
@@ -78,7 +88,6 @@ body {
     border-bottom: 3px solid rgba(255, 255, 255, 0.25);
     outline: none;
     overflow: hidden;
-    flex: 0.75;
 }
 
 .search-field:focus-visible {
@@ -126,15 +135,15 @@ body {
 }
 
 .week-card-container {
-    display: flex;
-    justify-content: stretch;
-    align-items: stretch;
+    width: auto;
+    height: auto;
 }
 
 .week-cards {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    overflow-x: auto;
+    justify-content: flex-start;
     align-items: stretch;
     flex: 2;
 }
@@ -143,7 +152,7 @@ body {
     background: linear-gradient(to bottom, rgba(50, 50, 50, 0.1), rgba(50, 50, 50, 0.3));
     box-shadow: 0 0 20px 0 rgba(0,0,0,0.75);
     border-radius: 20px;
-    margin: 1vw;
+    margin: 20px;
     padding: 5vw;
     border: 1px solid black;
     display: flex;
@@ -152,6 +161,7 @@ body {
     flex: 1;
     transition: transform 1s ease-in;
     transform-origin: bottom left;
+    overflow: visible;
 }
 
 .week-card-container .card-container {
@@ -164,13 +174,9 @@ body {
     align-items: center;
     justify-items: left;
     flex: 1;
+    text-shadow: 0 10px 10px rgba(0,0,0,0.8);
 }
 
-lord-icon {
-    width:10vw;
-    height: auto;
-    margin: auto;
-}
 
 .min-temp, .max-temp, .wind, .pressure, .humidity, .predictability, .visibility {
     display: flex;
@@ -186,6 +192,7 @@ h1, h2, h3, .attribution, .search-box input {
 
 .attribution {
     text-align: center;
+    text-shadow: 0 10px 10px rgba(0,0,0,0.8);
 }
 
 .attribution a:visited {
@@ -285,31 +292,26 @@ h1, h2, h3, .attribution, .search-box input {
     grid-area: 4/1/4/3;
     justify-content: flex-end;
     flex-direction: row-reverse;
-    justify-self: center;
 }
 
 .week-cards .max-temp {
     grid-area: 4/3/4/5;
-    justify-self: center;
 }
 
 .week-cards .wind {
-    grid-area: 2/5/2/7;
+    grid-area: 5/3/5/5;
 }
 
 .week-cards .pressure {
-    grid-area: 5/4/5/7;
-    justify-self: center;
+    grid-area: 5/5/5/7;
 }
 
 .week-cards .humidity {
     grid-area: 4/5/4/7;
-    justify-self: center;
 }
 
 .week-cards .visibility {
-    grid-area: 5/1/5/4;
-    justify-self: center;
+    grid-area: 5/1/5/3;
 }
 
 .week-cards .predictability {
@@ -360,22 +362,22 @@ h1, h2, h3, .attribution, .search-box input {
     }
 
     .main-card > .min-temp {
-        grid-area: 3/5/3/6;
-        justify-self: center;
-    }
-
-    .main-card > .max-temp {
         grid-area: 3/6/3/7;
         justify-self: center;
     }
 
+    .main-card > .max-temp {
+        grid-area: 3/7/3/8;
+        justify-self: center;
+    }
+
     .main-card > .wind {
-        grid-area: 5/3/5/5;
+        grid-area: 5/4/5/6;
         justify-self: center;
     }
 
     .main-card > .pressure {
-        grid-area: 5/5/5/7;
+        grid-area: 5/7/5/9;
         justify-self: center;
     }
 
@@ -385,7 +387,7 @@ h1, h2, h3, .attribution, .search-box input {
     }
 
     .main-card > .visibility {
-        grid-area: 5/7/5/9;
+        grid-area: 5/10/5/12;
         justify-self: center;
     }
 
@@ -393,11 +395,6 @@ h1, h2, h3, .attribution, .search-box input {
         grid-area: 2/3/2/5;
     }
 
-    .week-cards {
-        flex-direction: row;
-        overflow-x: auto;
-        justify-content: flex-start;
-    }
 }
 
 /*laptop*/
