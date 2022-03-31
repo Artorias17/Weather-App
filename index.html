@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&display=swap" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
+    <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
     <script src="https://unpkg.com/animate-css-grid@latest/dist/main.js"></script>
     <script src="index.js" defer></script>
 </head>
@@ -27,6 +28,11 @@
 
         </div>
         <div class="card-container" data-initial>
+            <lord-icon
+                    src="https://cdn.lordicon.com/ymrqtsej.json"
+                    trigger="loop"
+                    colors="primary:#848484">
+            </lord-icon>
             <div class="main-card card">
             <h1 class="location">Dhaka</h1>
             <h2 class="day">Today</h2>
@@ -263,5 +269,42 @@
         </div>
     </div>
 </div>
+
+<!--Template for card-->
+<template class="card">
+    <img class="weather-state-icon icon">
+    <h2 class="day"></h2>
+    <h2 class="main-temp"></h2>
+    <h2 class="weather-state-name"></h2>
+    <div class="min-temp">
+        <h3 class="min_temp"></h3>
+        <img class="thermometer-low icon" src="img/icons/min_temp.svg">
+    </div>
+    <div class="max-temp">
+        <img class="thermometer-high icon" src="img/icons/max_temp.svg">
+        <h3 class="max_temp"></h3>
+    </div>
+    <div class="wind">
+        <img class="wind-icon icon">
+        <h3 class="wind_speed"></h3>
+    </div>
+    <div class="pressure">
+        <img class="barometer-icon icon" src="img/icons/pressure.svg">
+        <h3 class="air-pressure"></h3>
+    </div>
+    <div class="humidity">
+        <img class="humidity-icon icon" src="img/icons/humidity.svg">
+        <h3 class="humidity-percentage"></h3>
+    </div>
+    <div class="visibility">
+        <img class="visibility-icon icon" src="img/icons/telescope.svg">
+        <h3 class="visibility-distance"></h3>
+    </div>
+    <div class="predictability">
+        <img class="predictability-icon icon" src="img/icons/predict.svg">
+        <h3 class="predictability-percentage"></h3>
+    </div>
+</template>
+
 </body>
 </html>

@@ -16,21 +16,36 @@
 //     forceGridAnimation();
 //
 // });
+
+
 const day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const weatherIcons = {sn: "snow", sl: "sleet",  h: "hail", t: "thunderstorm", hr: "heavy_rain", lr: "rain", s: "showers", hc: "cloud", lc:"light_cloud", c: "sunny"}
+const weatherBackground = {sn: "snow", sl: "snow",  h: "snow", t: "thunderstorm", hr: "heavy_rain", lr: "rain", s: "rain", hc: "heavy_cloud", lc:"light_cloud", c: "sunny"}
 
 const search = document.querySelector(".search-box");
+const cardContainer = document.querySelectorAll(".card-container");
+const cardTemplate = document.querySelector("template");
 
+const customElement = document.createElement("lord-icon");
+customElement.setAttribute("src", "https://cdn.lordicon.com/ymrqtsej.json");
+customElement.setAttribute("trigger", "loop");
+customElement.setAttribute("colors", "primary:#848484");
 
-const proxy = "https://cors-anywhere.herokuapp.com/"
-const weatherAPI = "https://www.metaweather.com/api/";
+const weatherAPI = "api/";
 
+function setSpinnerAll() {
+    cardContainer.forEach((value, index) => {
+        while (cardContainer[index].firstChild) cardContainer[index].removeChild(cardContainer[index].firstChild);
+        cardContainer[index].appendChild(customElement);
+    });
+}
 
 async function getLocationIDs(location) {
-    let locationArray = await fetch(`${proxy}${weatherAPI}location/search/?query=${location}`)
+    let locationArray = await fetch(`${weatherAPI}location/search/?query=${location}`)
         .then((response) => response.json())
         .then((data) => {
-            console.log("Successfully retrieved location results")
+            console.log("Successfully retrieved location results");
+            setSpinnerAll();
             return data
         })
 
@@ -41,11 +56,12 @@ async function getLocationIDs(location) {
     return locationArray;
 }
 
-function to2Decimal(number){
+function to1DecimalPlace(number){
     return Math.round(number * 10) / 10;
 }
+
 async function getWeatherData(id) {
-    let weatherInfo = await fetch(proxy + weatherAPI + `location/${id}/`)
+    let weatherInfo = await fetch( `${weatherAPI}location/${id}/`)
         .then((response) => response.json())
         .then((data) => {
             console.log("Successfully retrieved data for " + data.title);
@@ -57,12 +73,12 @@ async function getWeatherData(id) {
         delete value.wind_direction;
         delete value.created;
         value.applicable_date = day[new Date(value.applicable_date).getDay()];
-        value.the_temp = to2Decimal(value.the_temp);
-        value.min_temp = to2Decimal(value.min_temp);
-        value.max_temp = to2Decimal(value.max_temp);
-        value.wind_speed = to2Decimal(value.wind_speed * 1.609) ;
-        value.air_pressure = to2Decimal(value.air_pressure / 1013)
-        value.visibility = to2Decimal(value.visibility * 1.609);
+        value.the_temp = to1DecimalPlace(value.the_temp);
+        value.min_temp = to1DecimalPlace(value.min_temp);
+        value.max_temp = to1DecimalPlace(value.max_temp);
+        value.wind_speed = to1DecimalPlace(value.wind_speed * 1.609) ;
+        value.air_pressure = to1DecimalPlace(value.air_pressure / 1013)
+        value.visibility = to1DecimalPlace(value.visibility * 1.609);
 
         if(value.wind_direction_compass.length === 3)
             value.wind_direction_compass = value.wind_direction_compass.substring(1);
@@ -72,27 +88,38 @@ async function getWeatherData(id) {
     return weatherInfo;
 }
 
-function fillData(city, weatherObjectsArray) {
-    const cards = document.querySelectorAll(".card");
-
-    cards[0].querySelector(".location").innerHTML = city;
-
+function setChange(city, weatherObjectsArray) {
     weatherObjectsArray.forEach((value, index) => {
-        cards[index].querySelector(".day").innerHTML = value["applicable_date"];
-        cards[index].querySelector(".main-temp").innerHTML = `${value["the_temp"]}°C`;
-        cards[index].querySelector(".weather-state-name").innerHTML = value["weather_state_name"];
-        cards[index].querySelector(".min_temp").innerHTML = `${value["min_temp"]}°C`;
-        cards[index].querySelector(".max_temp").innerHTML = `${value["max_temp"]}°C`;
-        cards[index].querySelector(".weather-state-icon").src = `img/icons/${weatherIcons[value["weather_state_abbr"]]}.svg`
-        cards[index].querySelector(".weather-state-icon").alt = value["weather_state_name"];
-        cards[index].querySelector(".wind_speed").innerHTML = `${value["wind_speed"]} km/h`;
-        cards[index].querySelector(".wind-icon").src = `img/icons/${value["wind_direction_compass"]}.svg`
-        cards[index].querySelector(".wind-icon").alt = value["wind_direction_compass"];
-        cards[index].querySelector(".air-pressure").innerHTML = `${value["air_pressure"]} atm`;
-        cards[index].querySelector(".humidity-percentage").innerHTML = `${value["humidity"]}%`;
-        cards[index].querySelector(".visibility-distance").innerHTML = `${value["visibility"]} km`;
-        cards[index].querySelector(".predictability-percentage").innerHTML = `${value["predictability"]}%`;
-    })
+        const card = cardTemplate.cloneNode(true);
+
+        card.querySelector(".day").innerHTML = value["applicable_date"];
+        card.querySelector(".main-temp").innerHTML = `${value["the_temp"]}°C`;
+        card.querySelector(".weather-state-name").innerHTML = value["weather_state_name"];
+        card.querySelector(".min_temp").innerHTML = `${value["min_temp"]}°C`;
+        card.querySelector(".max_temp").innerHTML = `${value["max_temp"]}°C`;
+        card.querySelector(".weather-state-icon").src = `img/icons/${weatherIcons[value["weather_state_abbr"]]}.svg`
+        card.querySelector(".weather-state-icon").alt = value["weather_state_name"];
+        card.querySelector(".wind_speed").innerHTML = `${value["wind_speed"]} km/h`;
+        card.querySelector(".wind-icon").src = `img/icons/${value["wind_direction_compass"]}.svg`
+        card.querySelector(".wind-icon").alt = value["wind_direction_compass"];
+        card.querySelector(".air-pressure").innerHTML = `${value["air_pressure"]} atm`;
+        card.querySelector(".humidity-percentage").innerHTML = `${value["humidity"]}%`;
+        card.querySelector(".visibility-distance").innerHTML = `${value["visibility"]} km`;
+        card.querySelector(".predictability-percentage").innerHTML = `${value["predictability"]}%`;
+
+        if(index === 0) {
+            const loc = document.createElement("h1");
+            loc.classList.add("location");
+            loc.innerHTML = city;
+            card.appendChild(loc);
+        }
+
+        while (cardContainer[index].firstChild) cardContainer[index].removeChild(cardContainer[index].firstChild);
+        cardContainer[index].appendChild(card);
+
+        document.querySelector("body").style.backgroundImage = `url("img/background/${weatherBackground[value["weather_state_abbr"]]}.jpg")`
+
+    });
 
     console.log("Successfully Updated");
 }
@@ -104,5 +131,5 @@ search.addEventListener("submit", async (event) => {
     console.log(searchString);
     const locations = await getLocationIDs(searchString);
     const data = await getWeatherData(locations[0]);
-    await fillData(data.city, data.weather);
+    await setChange(data.city, data.weather);
 })
