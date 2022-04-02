@@ -7,12 +7,11 @@ A weather app with responsive design that presents a 5-day detailed weather fore
 
 Built using raw HTML, CSS and JavaScript.
 
-Weather data collected from <a href="https://www.metaweather.com/" title="MetaWeather">MetaWeather</a><br>
 
-Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a>
-and
-<a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>
-from
-<a href="https://www.flaticon.com/" title="Flaticon">Flaticon</a>
++ Weather data collected from [MetaWeather](https://www.metaweather.com/).
 
-A demo of the app can be accessed <a href="https://kawaii-weather.netlify.app/">here</a>.
++ Icons made by [Freepik](https://www.freepik.com) and [Smashicons](https://www.flaticon.com/authors/smashicons) from [Flaticon](https://www.flaticon.com/).
+
++ Background images collected from [Unsplash](https://unsplash.com/).
+
+A demo of the app can be accessed [here](https://kawaii-weather.netlify.app/).
