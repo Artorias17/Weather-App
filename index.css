@@ -344,8 +344,9 @@ h1, h2, h3, .attribution, .search-box input {
     }
 
     .main-card > .location {
-        grid-area: 1/1/1/-1;
+        grid-area: 1/1/1/5;
     }
+
     .main-card > .weather-state-icon {
         grid-area: 3/1/5/1;
         width: calc(var(--today-h2) * 3);
@@ -473,8 +474,7 @@ h1, h2, h3, .attribution, .search-box input {
     }
 
     .main-card > .location {
-        grid-row-start: 1;
-        grid-column-start: 1;
+        grid-area: 1/1/1/4;
     }
 
     .main-card > .day {
@@ -530,5 +530,4 @@ h1, h2, h3, .attribution, .search-box input {
         grid-area: 2/2/2/3;
         justify-self: flex-start;
     }
-
 }
