@@ -6,7 +6,7 @@
     --week-h2: clamp(1.5rem, 0.4285714285714286rem + 5.357142857142857vw, 3rem);
     --week-h3: clamp(1rem, 0.2857142857142858rem + 3.571428571428571vw, 2rem);
     --search-font: clamp(1rem, 0.2857142857142858rem + 3.571428571428571vw, 2rem);
-    --container-background: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+    --container-background: radial-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5));
     --container-shadow: 0 0 10px 2px rgba(0,0,0,0.75);
     --text-shadow: 0px 0px 10px rgba(0,0,0,0.75);
 }
@@ -21,13 +21,13 @@
 body {
     height: 100vh;
     width: 100vw;
-    background-image: url("img/background/snow.jpg");
+    background-image: url("img/background/default.jpg");
     background-color: rgba(0, 0, 0, 0.7);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
 }
 
 .app {
@@ -53,7 +53,7 @@ body {
 
 .search-box-container {
     background: var(--container-background);
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: var(--container-shadow);
     margin: 10px;
     border: 1px solid black;
@@ -143,9 +143,9 @@ label {
 }
 
 .card-container {
-    background: radial-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+    background: var(--container-background);
     box-shadow: var(--container-shadow);
-    border-radius: 20px;
+    border-radius: 15px;
     margin: 10px;
     padding: 2.5vw;
     border: 1px solid black;
