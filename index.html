@@ -17,37 +17,23 @@
 </head>
 <body>
 <div class="app">
-    <div class="main-container">
-        <div class="search-box-container" data-initial>
-            <form class="search-box">
-                <label>
-                    <input type="search" placeholder="Search city" class="search-field">
-                </label>
+    <div class="search-box-container" data-initial>
+        <form class="search-box">
+            <label>
+                <input type="search" placeholder="Search city" class="search-field">
                 <button type="submit">
                     <img src="img/icons/search.svg" class="search-button icon" alt="search button image">
                 </button>
-            </form>
+            </label>
+        </form>
 
-        </div>
-        <div class="card-container" data-initial></div>
-        <div class="week-card-container" data-initial>
-            <div class="week-cards">
-                <div class="card-container" data-initial></div>
-                <div class="card-container" data-initial></div>
-                <div class="card-container" data-initial></div>
-                <div class="card-container" data-initial></div>
-            </div>
-        </div>
     </div>
-    <div class="attribution">
-        <div>Weather data collected from <a href="https://www.metaweather.com/" title="MetaWeather">MetaWeather</a><br>
-            Icons made by
-            <a href="https://www.freepik.com" title="Freepik">Freepik</a>
-            and
-            <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>
-            from
-            <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </div>
+    <div class="card-container" data-initial></div>
+    <div class="week-card-container">
+        <div class="card-container" data-initial></div>
+        <div class="card-container" data-initial></div>
+        <div class="card-container" data-initial></div>
+        <div class="card-container" data-initial></div>
     </div>
 </div>
 
@@ -59,8 +45,8 @@
         <h2 class="main-temp"></h2>
         <h2 class="weather-state-name"></h2>
         <div class="min-temp">
-            <h3 class="min_temp"></h3>
             <img class="thermometer-low icon" src="img/icons/min_temp.svg">
+            <h3 class="min_temp"></h3>
         </div>
         <div class="max-temp">
             <img class="thermometer-high icon" src="img/icons/max_temp.svg">

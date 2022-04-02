@@ -14,6 +14,19 @@ customElement.setAttribute("style", "width:10vw; height: auto; margin: auto;");
 
 const weatherAPI = "api/";
 
+
+search.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setSpinnerAll();
+
+    const searchString = search.querySelector("input").value;
+    const locations = await getLocationID(searchString);
+    const data = await getWeatherData(locations[0]);
+    await setChange(data.city, data.weather);
+})
+
+
 function setSpinnerAll() {
     cardContainer.forEach((value, index) => {
         while (cardContainer[index].firstChild) cardContainer[index].removeChild(cardContainer[index].firstChild);
@@ -21,8 +34,19 @@ function setSpinnerAll() {
     });
 }
 
-async function getLocationIDs(location) {
-    let locationArray = await fetch(`${weatherAPI}location/search/?query=${location}`)
+
+function to1DecimalPlace(number){
+    return Math.round(number * 10) / 10;
+}
+
+
+function getRandom(start, end){
+    return Math.random() * (end - start) + start;
+}
+
+
+async function getLocationID(location, queryType = `query`) {
+    let locationArray = await fetch(`${weatherAPI}location/search/?${queryType}=${location}`)
         .then((response) => response.json())
         .then((data) => {
             return data
@@ -34,9 +58,6 @@ async function getLocationIDs(location) {
     return locationArray;
 }
 
-function to1DecimalPlace(number){
-    return Math.round(number * 10) / 10;
-}
 
 async function getWeatherData(id) {
     let weatherInfo = await fetch( `${weatherAPI}location/${id}/`)
@@ -63,6 +84,7 @@ async function getWeatherData(id) {
 
     return weatherInfo;
 }
+
 
 function setChange(city, weatherObjectsArray) {
     weatherObjectsArray.forEach((value, index) => {
@@ -98,13 +120,18 @@ function setChange(city, weatherObjectsArray) {
 
 }
 
-search.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setSpinnerAll();
+function begin(){
+    navigator.geolocation.getCurrentPosition(
+        async (geo) => {
+            const locations = await getLocationID(`${geo.coords.latitude},${geo.coords.longitude}`, "lattlong");
+            const data = await getWeatherData(locations[0]);
+            await setChange(data.city, data.weather);
+        },
+        async () => {
+            const locations = await getLocationID(`${getRandom(-90, 91)},${getRandom(-180, 181)}`, "lattlong");
+            const data = await getWeatherData(locations[0]);
+            await setChange(data.city, data.weather);
+        });
+}
 
-    const searchString = search.querySelector("input").value;
-    const locations = await getLocationIDs(searchString);
-    const data = await getWeatherData(locations[0]);
-    await setChange(data.city, data.weather);
-})
+begin();
