@@ -29,7 +29,7 @@ search.addEventListener("submit", async (event) => {
 
 function setSpinnerAll() {
     cardContainer.forEach((value, index) => {
-        while (cardContainer[index].firstChild) cardContainer[index].removeChild(cardContainer[index].firstChild);
+        while (cardContainer[index].hasChildNodes()) cardContainer[index].removeChild(cardContainer[index].firstChild);
         cardContainer[index].appendChild(customElement.cloneNode());
     });
 }
@@ -114,13 +114,14 @@ function setChange(city, weatherObjectsArray) {
             document.querySelector("body").style.backgroundImage = `url("img/background/${weatherBackground[value["weather_state_abbr"]]}.jpg")`
         }
 
-        while (cardContainer[index].firstChild) cardContainer[index].removeChild(cardContainer[index].firstChild);
+        while (cardContainer[index].hasChildNodes()) cardContainer[index].removeChild(cardContainer[index].firstChild);
         cardContainer[index].appendChild(card);
     });
 
 }
 
 function begin(){
+    setSpinnerAll();
     navigator.geolocation.getCurrentPosition(
         async (geo) => {
             const locations = await getLocationID(`${geo.coords.latitude},${geo.coords.longitude}`, "lattlong");
